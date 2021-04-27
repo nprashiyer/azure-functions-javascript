@@ -2,7 +2,9 @@ const { MongoClient } = require("mongodb");
 const { v4: uuidv4 } = require("uuid");
 
 /* use the Cosmos DB connection string you copied ealier and replace in the `url` variable */
-const url = "mongodb://testutil001:ZlRK0WnYoaYd4euA5DnAwRuBWtTBhdXPMcbI2KKHIkdxqVqtOEszm38wmX6cnfGJodzEZ32UhKtTH8PXfec1Sw==@testutil001.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@testutil001@";
+/* const url = "mongodb://testutil001:ZlRK0WnYoaYd4euA5DnAwRuBWtTBhdXPMcbI2KKHIkdxqVqtOEszm38wmX6cnfGJodzEZ32UhKtTH8PXfec1Sw==@testutil001.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@testutil001@";
+*/
+const url = process.env["MONGODB_CONNECTION"] /*stored as secret in Apllication Setting*/
 const client = new MongoClient(url);
 
 module.exports = async function (context, req) {
